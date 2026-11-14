@@ -3,5 +3,6 @@ status.json
 prefs.json
 capsule.log
 plugin.log
+.tools/
 .DS_Store
 Thumbs.db

@@ -1,0 +1,76 @@
+{
+  "format": 1,
+  "title": {
+    "en": "abraxasLi plugins",
+    "zh": "abraxasLi 插件"
+  },
+  "description": {
+    "en": "DeepSeek Harness plugins by abraxasLi.",
+    "zh": "abraxasLi 的 DeepSeek Harness 插件。"
+  },
+  "metadata": {
+    "categories": {
+      "desktop": {
+        "title": {
+          "en": "Desktop",
+          "zh": "桌面"
+        }
+      }
+    },
+    "labels": {
+      "windows": {
+        "title": {
+          "en": "Windows",
+          "zh": "Windows"
+        }
+      }
+    },
+    "sortKeys": {}
+  },
+  "plugins": [
+    {
+      "name": "dsh-desktop-capsule",
+      "title": {
+        "en": "Desktop capsule",
+        "zh": "桌面胶囊"
+      },
+      "description": {
+        "en": "A glass, always-on-top pill that reports what the agent is doing, alerts you when it needs an approval or an answer, and brings the window back on click.",
+        "zh": "玻璃泡泡式置顶胶囊：显示当前进度，需要你授权或回答时弹卡片提醒，点一下把 DSH 窗口切回前台。"
+      },
+      "icon": "../icon.svg",
+      "author": "abraxasLi",
+      "homepage": "https://github.com/abraxasLi/dsh-desktop-capsule",
+      "repository": {
+        "url": "https://github.com/abraxasLi/dsh-desktop-capsule"
+      },
+      "metadata": {
+        "category": "desktop",
+        "keywords": [
+          "desktop",
+          "overlay",
+          "status",
+          "notification",
+          "windows"
+        ],
+        "labels": [
+          "windows"
+        ]
+      },
+      "versions": [
+        {
+          "version": "0.1.0",
+          "publishTimestamp": 1794643844,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/abraxasLi/dsh-desktop-capsule",
+            "commit": "9c0c0ab2ca4545952c826b46021286c1f0ddf425"
+          },
+          "engines": {
+            "dsh": ">=0.2.2-rc.2"
+          }
+        }
+      ]
+    }
+  ]
+}

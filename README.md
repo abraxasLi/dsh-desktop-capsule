@@ -39,6 +39,18 @@ DSH → **Plugins** → **Add plugin** → 选择本仓库目录（含 `package.
 
 等价于 `plugin_manager` 的 `install_bundle`，`target` 传上面这个 git spec。
 
+### 方式三：在插件市场的 Discover 里安装
+
+本仓库自带一个 format 1 的插件市场索引 `market/index.json`，把这个地址加进 DSH 的插件市场源即可：
+
+```
+https://raw.githubusercontent.com/abraxasLi/dsh-desktop-capsule/main/market/index.json
+```
+
+索引里的条目钉住了提交 `9c0c0ab`，安装时 pnpm 拿到的就是那一份代码。
+
+> Discover 页面来自 DSH 的可选市场插件（`@deepseek-ai/dsh-experimental-plugin-market-bundle`），需要在 Plugins 里启用后才会出现「发现」标签页。
+
 ### 方式三：本地已 clone
 
 把仓库目录作为 `target` 传给 `install_bundle` 即可（DSH 会以链接方式装入当前 profile）。
