@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Desktop capsule",
+    "description": "A small always-on-top pill that reports what the agent is doing, notifies you when it needs an approval or an answer, and brings the DeepSeek Harness window back on click.",
+    "detail": "docs/DETAIL.md"
+  }
+}

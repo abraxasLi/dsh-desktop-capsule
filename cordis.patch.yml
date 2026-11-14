@@ -1,0 +1,3 @@
+- insert:
+    - id: desktop-capsule
+      name: '@local/dsh-desktop-capsule'

@@ -1,0 +1,23 @@
+{
+  "connected": "桌面胶囊已连接",
+  "idle": "空闲",
+  "running": "正在干活",
+  "runningTurn": "正在干活 · 第 {0} 轮",
+  "approval": "等你授权 · {0}",
+  "approvalPlain": "等你授权",
+  "question": "等你回答 · {0}",
+  "questionPlain": "等你回答",
+  "error": "出错了 · {0}",
+  "errorPlain": "出错了",
+  "done": "这一轮做完了",
+  "sep": " · ",
+  "clickMe": "点我看看",
+  "moreSessions": " · 另 {0} 个会话",
+  "notifyApprovalTitle": "需要你授权",
+  "notifyQuestionTitle": "需要你回答",
+  "notifyErrorTitle": "出错了",
+  "notifyDoneTitle": "这一轮做完了",
+  "notifyClick": "点我回到 DSH",
+  "notifyApprovalBody": "{0} · 点我回到 DSH",
+  "notifyDoneBody": "用时 {0} · 点我回到 DSH"
+}

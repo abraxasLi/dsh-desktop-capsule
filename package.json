@@ -1,0 +1,51 @@
+{
+  "name": "dsh-desktop-capsule",
+  "version": "0.1.0",
+  "description": "Glass desktop capsule for DeepSeek Harness: always-on-top agent status, approval and answer alerts, and click to return to the window.",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "capsule.ps1",
+    "strings.json",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "docs",
+    "icon.svg"
+  ],
+  "keywords": [
+    "deepseek",
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "desktop",
+    "overlay",
+    "windows"
+  ],
+  "author": "abraxasLi",
+  "license": "MIT",
+  "os": [
+    "win32"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abraxasLi/dsh-desktop-capsule.git"
+  },
+  "homepage": "https://github.com/abraxasLi/dsh-desktop-capsule#readme",
+  "bugs": {
+    "url": "https://github.com/abraxasLi/dsh-desktop-capsule/issues"
+  },
+  "engines": {
+    "dsh": ">=0.2.2-rc.2"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
