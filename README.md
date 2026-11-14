@@ -27,35 +27,43 @@ DSH 本身只有窗口内的进度提示：窗口一最小化，你就不知道�
 
 ## 安装
 
-### 方式一：插件页面添加目录
+### 方式一：在插件市场的 Discover 里安装（推荐）
 
-DSH → **Plugins** → **Add plugin** → 选择本仓库目录（含 `package.json`）。
-
-### 方式二：从 GitHub 安装
-
-在 DSH 里对助手说：
-
-> 安装插件：`git+https://github.com/abraxasLi/dsh-desktop-capsule.git`
-
-等价于 `plugin_manager` 的 `install_bundle`，`target` 传上面这个 git spec。
-
-### 方式三：在插件市场的 Discover 里安装
-
-本仓库自带一个 format 1 的插件市场索引 `market/index.json`，把这个地址加进 DSH 的插件市场源即可：
+本仓库自带一个 **format 1** 的插件市场索引：`market/index.json`。把它加进 DSH 的插件市场源，就能在「发现」页里看到并一键安装：
 
 ```
 https://raw.githubusercontent.com/abraxasLi/dsh-desktop-capsule/main/market/index.json
 ```
 
-索引里的条目钉住了提交 `9c0c0ab`，安装时 pnpm 拿到的就是那一份代码。
+两步：
 
-> Discover 页面来自 DSH 的可选市场插件（`@deepseek-ai/dsh-experimental-plugin-market-bundle`），需要在 Plugins 里启用后才会出现「发现」标签页。
+1. Plugins 里启用 `@deepseek-ai/dsh-experimental-plugin-market-bundle` —— 「发现」页是这个可选包提供的，不启用就没有这个标签页。
+2. 在「发现」页添加上面的索引 URL，搜索 `desktop capsule` 安装。
 
-### 方式三：本地已 clone
+索引里的版本钉住了提交 `9c0c0ab`，安装时 pnpm 拉到的就是那一份代码；索引本身用 DSH 自带的 `@deepseek-ai/dsh-plugin-market-index` 校验器验过（format 1）。
 
-把仓库目录作为 `target` 传给 `install_bundle` 即可（DSH 会以链接方式装入当前 profile）。
+### 方式二：直接从 GitHub 安装
 
-安装后无需重启：胶囊会自动出现在桌面右下角，并随这次会话的状态变化。
+在 DSH 里对助手说：
+
+> 安装插件：`git+https://github.com/abraxasLi/dsh-desktop-capsule.git`
+
+等价于 `plugin_manager` 的 `install_bundle`，`target` 传这个 git spec。要锁定版本就带提交：
+
+```
+git+https://github.com/abraxasLi/dsh-desktop-capsule.git#9c0c0ab2ca4545952c826b46021286c1f0ddf425
+```
+
+### 方式三：本地目录
+
+把仓库目录作为 `target` 传给 `install_bundle`，或走 **Plugins** → **Add plugin** 选择本目录（含 `package.json`）。DSH 会以链接方式装入当前 profile，适合改代码时用。
+
+### 关于“上架”与更新
+
+- **DeepSeek 目前没有公开的插件商店提交入口**：DSH 的插件市场读的是用户自己配置的**索引 URL**，没有中心化审核队列。所以这里的“发布”= 公开仓库 + 一个能装到索引里的 `market/index.json`，任何人的 DSH 都能通过它发现本插件。
+- **首次安装即时生效**，胶囊会立刻出现在桌面右下角。
+- **升级或换安装源**（例如从本地目录换成 GitHub 版）后需要**重启 DSH**：宿主插件是 ESM 模块，已被加载的模块有缓存，`set_plugin` 开关不会重新导入新代码。
+- 装完可以这样确认：`%USERPROFILE%\.dsh\desktop-capsule\` 下应出现 `status.json`（每 2 秒刷新）、`plugin.log`、`capsule.log`。
 
 ## 它是怎么工作的
 
@@ -97,9 +105,27 @@ DSH 进程                        胶囊进程
 
 ## English
 
-A frosted-glass style always-on-top capsule for DeepSeek Harness on Windows: it mirrors the live agent state (working / waiting for approval / waiting for an answer / done / failed), shows a corner card with a soft sound when you are needed, and brings the DSH window back on click.
+A glass-style, always-on-top capsule for DeepSeek Harness on Windows: it mirrors the live agent state (working / waiting for approval / waiting for an answer / done / failed), shows a corner card with a soft sound when you are needed, and brings the DSH window back on click.
 
-Install by adding this directory as a plugin, or run the installer with the git spec above. No dependencies, no build step: the host half is plain ESM, the pill is a WPF script. Windows 10/11 and DSH Desktop only.
+No dependencies and no build step: the host half is plain ESM, the pill is a WPF script. Windows 10/11 and DSH Desktop only.
+
+### Install
+
+DeepSeek Harness has no central plugin-store submission endpoint: its **Discover** page reads the **index URLs a user configures**. Publishing here therefore means a public repository plus a format-1 index that any DSH profile can point at.
+
+```bash
+# from GitHub (pin the commit for a reproducible install)
+git+https://github.com/abraxasLi/dsh-desktop-capsule.git#9c0c0ab2ca4545952c826b46021286c1f0ddf425
+```
+
+```text
+# market index (Discover), format 1, validated with @deepseek-ai/dsh-plugin-market-index
+https://raw.githubusercontent.com/abraxasLi/dsh-desktop-capsule/main/market/index.json
+```
+
+Add that URL under Discover after enabling `@deepseek-ai/dsh-experimental-plugin-market-bundle`, then install the plugin from the listing. A local checkout works too: pass the directory as the install target.
+
+The first install takes effect immediately. **Restart DSH after an upgrade or an install-source switch** — host plugins are ESM modules and an already-loaded module stays cached.
 
 ## License
 
